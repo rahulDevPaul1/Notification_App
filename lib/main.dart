@@ -1,6 +1,5 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-
 import 'my_app.dart';
 
 void main() async {
@@ -11,17 +10,19 @@ void main() async {
       channelDescription: "Test Notification Channel",
       channelGroupKey: "basic_channel_group",
     ),
-
-  ], channelGroups: [
+  ],
+      channelGroups: [
     NotificationChannelGroup(
       channelGroupKey: "basic_channel_group",
       channelGroupName: 'basic group',
     ),
   ]);
   bool isAllowedToSendNotification =
-      await AwesomeNotifications().isNotificationAllowed();
+  await AwesomeNotifications().isNotificationAllowed();
   if (!isAllowedToSendNotification) {
     AwesomeNotifications().requestPermissionToSendNotifications();
   }
+
+
   runApp(const MyApp());
 }

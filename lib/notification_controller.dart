@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 
 
@@ -18,23 +20,23 @@ class NotificationController {
   static Future<void> onActionReceivedMethod(
       ReceivedAction receivedAction) async {}
 
-  static void schedulePeriodicNotification() {
-    var localTimeZone;
+  static void schedulePeriodicNotification() async {
+
+    String localTimeZone = await AwesomeNotifications().getLocalTimeZoneIdentifier();
+
     AwesomeNotifications().createNotification(
+
       content: NotificationContent(
-        id: 1,
+        id: Random().nextInt(100),
         channelKey: 'basic_channel',
         title: 'Periodic Notification',
         body: 'This is a periodic notification.',
-        wakeUpScreen: true,
-        category: NotificationCategory.Alarm,
+        notificationLayout: NotificationLayout.Default,
+        actionType: ActionType.Default
       ),
       schedule: NotificationInterval(
-        interval: 60,
-        timeZone: localTimeZone,
-        preciseAlarm: true,
-      )
+        interval: 5,
+      ),
     );
   }
-
 }

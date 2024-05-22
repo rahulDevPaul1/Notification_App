@@ -1,8 +1,9 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:notification_example/notification_controller.dart';
+
 
 import 'my_home_page.dart';
+import 'notification_controller.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -17,11 +18,11 @@ class _MyAppState extends State<MyApp> {
     AwesomeNotifications().setListeners(
         onActionReceivedMethod: NotificationController.onActionReceivedMethod,
         onNotificationCreatedMethod:
-            NotificationController.onNotificationCreatedMethod,
+        NotificationController.onNotificationCreatedMethod,
         onDismissActionReceivedMethod:
-            NotificationController.onDissmissActionReceivedMethod,
+        NotificationController.onDissmissActionReceivedMethod,
         onNotificationDisplayedMethod:
-            NotificationController.onNotificationDisplayMethod);
+        NotificationController.onNotificationDisplayMethod);
     super.initState();
   }
 
